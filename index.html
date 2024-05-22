@@ -21,6 +21,9 @@
             letter-spacing: 4.0em; /* Adjust the letter spacing as needed */
             display: inline-block; /* Ensures text-align works */
         }
+        .tbl_video {
+            margin-bottom: 40px;
+        }
     </style> 
     <script src="resources/js/video_comparison.js"></script>    
     <script src="resources/js/dics.original.js"></script>
@@ -47,7 +50,7 @@
         <br> 
         <br> 
         <p style="width: 80%;">
-            Note: Training process when starting from random initialization. Left: Ours, Right: 3DGS.
+            Novel view reconstructions for (left) our method and (right) conventional 3D Gaussian Splatting with random initializations. Our method, even with random initialization, faithfully reconstructs the scene (e.g.. buildings at the back and the ground texture) providing much higher quality renderings.
         </p>
         
         <h1>Abstract</h1>
@@ -65,39 +68,20 @@
        
         <table class="tbl_video" style="width:100%;"">
             <tr>
-                <td colspan="4" style="background-color: #85b2df; font-size: 20px;">
-                   Image 10 from OMMO dataset.  
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <video class="kitti360" id="00" width="100%" preload="auto" playsinline webkit-playsinline loop autoplay muted>
-                        <source src="resources/10/10-them-rand.mp4" type="video/mp4">
-                    </video>
-                </td>
-                <td>
-                    <video class="kitti360" id="01" width="100%" preload="auto" playsinline webkit-playsinline loop autoplay muted>
-                        <source src="resources/10/10-them.mp4" type="video/mp4">
-                    </video>
+                <td colspan="4" style="background-color: #d1c4ce; font-size: 20px;">
+                   '10' sequence from OMMO dataset  
                 </td>
             </tr>
             <tr>
                 <td width=50% style="font-size: 18px;"> 3DGS-Random</td>
                 <td width=50% style="font-size: 18px;"> 3DGS</td>
             </tr>
-        </table>
-        <table class="tbl_video" style="width:100%;"">
             <tr>
-                <td>
-                    <video class="kitti360" id="02" width="100%" preload="auto" playsinline webkit-playsinline loop autoplay muted>
-                        <source src="resources/10/10-us-rand.mp4" type="video/mp4">
+                <td colspan="2">               
+                    <video class="kitti360" id="00" width="100%" preload="auto" playsinline webkit-playsinline loop autoplay muted>
+                        <source src="resources/10/10.mp4" type="video/mp4">
                     </video>
-                </td>
-                <td>
-                    <video class="kitti360" id="03" width="100%" preload="auto" playsinline webkit-playsinline loop autoplay muted>
-                        <source src="resources/10/10-us.mp4" type="video/mp4">
-                    </video>
-                </td>
+                </td> 
             </tr>
             <tr>
                 <td width=50% style="font-size: 18px;"> Ours-Random</td>
@@ -107,48 +91,26 @@
         
         <table class="tbl_video" style="width:100%;"">
             <tr>
-                <td colspan="4" style="background-color: #85b2df; font-size: 20px;">
-                   Image Stump from MipNerf360 dataset.  
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <video class="kitti360" id="00" width="100%" preload="auto" playsinline webkit-playsinline loop autoplay muted>
-                        <source src="resources/stump/stump-them-rand.mp4" type="video/mp4">
-                    </video>
-                </td>
-                <td>
-                    <video class="kitti360" id="01" width="100%" preload="auto" playsinline webkit-playsinline loop autoplay muted>
-                        <source src="resources/stump/stump-them.mp4" type="video/mp4">
-                    </video>
+                <td colspan="4" style="background-color: #d1c4ce; font-size: 20px;">
+                   'Stump' sequence from the MipNeRF360 dataset (pay attention to the details between the leaves)  
                 </td>
             </tr>
             <tr>
                 <td width=50% style="font-size: 18px;"> 3DGS-Random</td>
                 <td width=50% style="font-size: 18px;"> 3DGS</td>
             </tr>
-        </table>
-        <table class="tbl_video" style="width:100%;"">
             <tr>
-                <td>
-                    <video class="kitti360" id="02" width="100%" preload="auto" playsinline webkit-playsinline loop autoplay muted>
-                        <source src="resources/stump/stump-us-rand.mp4" type="video/mp4">
+                <td colspan="2">               
+                    <video class="kitti360" id="00" width="100%" preload="auto" playsinline webkit-playsinline loop autoplay muted>
+                        <source src="resources/stump/stump.mp4" type="video/mp4">
                     </video>
-                </td>
-                <td>
-                    <video class="kitti360" id="03" width="100%" preload="auto" playsinline webkit-playsinline loop autoplay muted>
-                        <source src="resources/stump/stump-us.mp4" type="video/mp4">
-                    </video>
-                </td>
+                </td> 
             </tr>
             <tr>
                 <td width=50% style="font-size: 18px;"> Ours-Random</td>
                 <td width=50% style="font-size: 18px;"> Ours</td>
             </tr>
         </table>
-
-
-
-</body>
-
-</html>
+    
+    </body>
+    </html>
