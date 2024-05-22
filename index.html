@@ -1,0 +1,154 @@
+<link rel="stylesheet" type="text/css" href="./resources/style.css" media="screen" />
+<link rel="stylesheet" href="resources/dics.original.css">
+
+<html lang="en">
+
+<head>
+    <title>
+        3D Gaussian Splatting as Markov Chain Monte Carlo 
+    </title>
+    <meta property="og:title"
+        content="3D Gaussian Splatting as Markov Chain Monte Carl." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            text-align: center;
+            background-color: #f0f0f0; /* Optional: Set a background color for better visibility */
+        }
+        .larger-arrow {
+            font-size: 2.0em; /* Adjust the font size as needed */
+            letter-spacing: 4.0em; /* Adjust the letter spacing as needed */
+            display: inline-block; /* Ensures text-align works */
+        }
+    </style> 
+    <script src="resources/js/video_comparison.js"></script>    
+    <script src="resources/js/dics.original.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">
+            3D Gaussian Splatting as Markov Chain Monte Carlo. 
+        </div>
+
+
+        <br><br>
+
+        <hr>
+
+        <div class="parent-video-compare-container">
+            <div class="video-compare-container" id="materialsDiv">
+                <video class="video" id="materials" loop playsinline autoPlay muted
+                  src="./resources/training_rand_compare/bicycle_both-rand.mp4" onplay="resizeAndPlay(this)"></video>
+                <canvas height=0 class="videoMerge" id="materialsMerge"></canvas>
+            </div>
+        </div>
+        <br> 
+        <br> 
+        <p style="width: 80%;">
+            Note: Training process when starting from random initialization. Left: Ours, Right: 3DGS.
+        </p>
+        
+        <h1>Abstract</h1>
+        <p style="width: 80%;text-align: justify;">
+            While 3D Gaussian Splatting has recently become popular for neural rendering, current methods rely on carefully engineered cloning and splitting strategies for placing Gaussians, which does not always generalize and may lead to poor-quality renderings.
+            For many real-world scenes this leads to their heavy dependence on good initializations.
+            In this work, we rethink the set of 3D Gaussians as a random sample drawn from an underlying probability distribution describing the physical representation of the scene---in other words, Markov Chain Monte Carlo (MCMC) samples.
+            Under this view, we show that the 3D Gaussian updates can be converted as Stochastic Gradient Langevin Dynamics (SGLD) update by simply introducing noise.
+            We then rewrite the densification and pruning strategies in 3D Gaussian Splatting as simply a deterministic state transition of MCMC samples, removing these heuristics from the framework.
+            To do so, we revise the `cloning' of Gaussians into a relocalization scheme that approximately preserves distribution invariance.
+            To encourage using fewer Gaussians for efficiency, we introduce an L1-regularizer on the Gaussians.
+            On various standard evaluation scenes, we show that our method provides improved rendering quality, easy control over the number of Gaussians, and robustness to initialization.
+        </p>
+        <h1>More Results</h1>
+       
+        <table class="tbl_video" style="width:100%;"">
+            <tr>
+                <td colspan="4" style="background-color: #85b2df; font-size: 20px;">
+                   Image 10 from OMMO dataset.  
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <video class="kitti360" id="00" width="100%" preload="auto" playsinline webkit-playsinline loop autoplay muted>
+                        <source src="resources/10/10-them-rand.mp4" type="video/mp4">
+                    </video>
+                </td>
+                <td>
+                    <video class="kitti360" id="01" width="100%" preload="auto" playsinline webkit-playsinline loop autoplay muted>
+                        <source src="resources/10/10-them.mp4" type="video/mp4">
+                    </video>
+                </td>
+            </tr>
+            <tr>
+                <td width=50% style="font-size: 18px;"> 3DGS-Random</td>
+                <td width=50% style="font-size: 18px;"> 3DGS</td>
+            </tr>
+        </table>
+        <table class="tbl_video" style="width:100%;"">
+            <tr>
+                <td>
+                    <video class="kitti360" id="02" width="100%" preload="auto" playsinline webkit-playsinline loop autoplay muted>
+                        <source src="resources/10/10-us-rand.mp4" type="video/mp4">
+                    </video>
+                </td>
+                <td>
+                    <video class="kitti360" id="03" width="100%" preload="auto" playsinline webkit-playsinline loop autoplay muted>
+                        <source src="resources/10/10-us.mp4" type="video/mp4">
+                    </video>
+                </td>
+            </tr>
+            <tr>
+                <td width=50% style="font-size: 18px;"> Ours-Random</td>
+                <td width=50% style="font-size: 18px;"> Ours</td>
+            </tr>
+        </table>
+        
+        <table class="tbl_video" style="width:100%;"">
+            <tr>
+                <td colspan="4" style="background-color: #85b2df; font-size: 20px;">
+                   Image Stump from MipNerf360 dataset.  
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <video class="kitti360" id="00" width="100%" preload="auto" playsinline webkit-playsinline loop autoplay muted>
+                        <source src="resources/stump/stump-them-rand.mp4" type="video/mp4">
+                    </video>
+                </td>
+                <td>
+                    <video class="kitti360" id="01" width="100%" preload="auto" playsinline webkit-playsinline loop autoplay muted>
+                        <source src="resources/stump/stump-them.mp4" type="video/mp4">
+                    </video>
+                </td>
+            </tr>
+            <tr>
+                <td width=50% style="font-size: 18px;"> 3DGS-Random</td>
+                <td width=50% style="font-size: 18px;"> 3DGS</td>
+            </tr>
+        </table>
+        <table class="tbl_video" style="width:100%;"">
+            <tr>
+                <td>
+                    <video class="kitti360" id="02" width="100%" preload="auto" playsinline webkit-playsinline loop autoplay muted>
+                        <source src="resources/stump/stump-us-rand.mp4" type="video/mp4">
+                    </video>
+                </td>
+                <td>
+                    <video class="kitti360" id="03" width="100%" preload="auto" playsinline webkit-playsinline loop autoplay muted>
+                        <source src="resources/stump/stump-us.mp4" type="video/mp4">
+                    </video>
+                </td>
+            </tr>
+            <tr>
+                <td width=50% style="font-size: 18px;"> Ours-Random</td>
+                <td width=50% style="font-size: 18px;"> Ours</td>
+            </tr>
+        </table>
+
+
+
+</body>
+
+</html>
